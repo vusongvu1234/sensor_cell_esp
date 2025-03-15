@@ -9,8 +9,6 @@
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_SHT31.h>
-#include <VL53L0X.h>
-#include "FS.h"
 #include <LITTLEFS.h>
 
 // Pin definitions
