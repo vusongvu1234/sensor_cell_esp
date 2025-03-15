@@ -1,5 +1,5 @@
 :repository-owner: arduino-libraries
-:repository-name: TFT
+:repository-name: sensor_cell_esp
 
 = {repository-name} Library for Arduino =
 
