@@ -1,0 +1,7 @@
+TFT_Display    KEYWORD1
+TempHumiditySensor    KEYWORD1
+IMUSensor    KEYWORD1
+LaserDistanceSensor    KEYWORD1
+FlashMemory    KEYWORD1
+ButtonHandler    KEYWORD1
+BatteryMonitor    KEYWORD1
