@@ -2,59 +2,55 @@
 #define ESP32S_LIBRARY_H
 
 #include <Arduino.h>
-#include <Wire.h>
-#include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
+#include <Wire.h>
+#include <Adafruit_SHT31.h>
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_SHT31.h>
 #include <VL53L0X.h>
 #include <LittleFS.h>
 
-// Pin definitions
-#define TFT_CS   5
-#define TFT_RST  4
-#define TFT_DC   2
 #define SHT31_ADDR 0x44
 #define MPU6050_ADDR 0x68
-#define FLASH_CS 15
-#define BUTTON1  14
-#define BUTTON2  27
-#define BATTERY_PIN 34
+#define BATTERY_PIN 35
 
 // TFT Display
 class TFT_Display {
 public:
-    Adafruit_ST7735 tft;
-    TFT_Display() : tft(TFT_CS, TFT_DC, TFT_RST) {}
+    TFT_Display(Adafruit_ST7735 &tft) : tft(tft) {}
     void begin();
     void printText(const char *text, int x, int y, uint16_t color);
+private:
+    Adafruit_ST7735 &tft;
 };
 
-// SHT31 Sensor
+// Temperature & Humidity Sensor
 class TempHumiditySensor {
 public:
-    Adafruit_SHT31 sht31;
     bool begin();
     float readTemperature();
     float readHumidity();
+private:
+    Adafruit_SHT31 sht31;
 };
 
-// MPU6050 Sensor
+// IMU Sensor (MPU6050)
 class IMUSensor {
 public:
-    Adafruit_MPU6050 mpu;
     bool begin();
     sensors_event_t getAccelData();
+private:
+    Adafruit_MPU6050 mpu;
 };
 
-// VL53L0X Laser Distance Sensor
+// Laser Distance Sensor (VL53L0X)
 class LaserDistanceSensor {
 public:
-    VL53L0X sensor;
     bool begin();
     uint16_t readDistance();
+private:
+    VL53L0X sensor;
 };
 
 // Flash Storage
